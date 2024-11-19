@@ -1,30 +1,5 @@
 const mongoose = require("mongoose");
 
-const predictionSchema = new mongoose.Schema({
-  parameters: {
-    type: Object, // Allow storing an object instead of [string]
-    required: true,
-  },
-  outputs: {
-    type: Object, // Allow storing an object instead of [string]
-    required: true,
-  },
-});
-
-const Prediction = mongoose.model("Prediction", predictionSchema);
-
-/*
-
-const predictionSchema = new mongoose.Schema({
-    parameters: [
-      { type: String, required: true } // This is for storing an array of parameters
-    ],
-    outputs: [
-      { type: String, required: true } // Array for storing prediction outputs
-    ],
-    createdAt: { type: Date, default: Date.now }
-  });
-
 
 const PredictionSchema = new mongoose.Schema({
   parameters: {
@@ -50,6 +25,5 @@ const PredictionSchema = new mongoose.Schema({
   },
   createdAt: { type: Date, default: Date.now }, // Timestamp for record creation
 });
-*/
 
-module.exports = mongoose.model("Prediction", predictionSchema);
+module.exports = mongoose.model("Prediction", PredictionSchema);
