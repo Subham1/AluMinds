@@ -1,5 +1,16 @@
 const mongoose = require("mongoose");
 
+/*
+const predictionSchema = new mongoose.Schema({
+    parameters: [
+      { type: Number, required: true } // This is for storing an array of parameters
+    ],
+    outputs: [
+      { type: Number, required: true } // Array for storing prediction outputs
+    ],
+    createdAt: { type: Date, default: Date.now }
+  });
+*/
 const PredictionSchema = new mongoose.Schema({
   parameters: {
     castingTemperature: { type: Number, required: true }, // Example: in °C
