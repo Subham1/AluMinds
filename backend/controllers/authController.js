@@ -1,6 +1,36 @@
 const passport = require("passport");
 const bcrypt = require("bcrypt");
 const User = require("../models/User");
+const bcrypt = require("bcrypt");
+const jwt = require("jsonwebtoken");
+
+exports.registerUser = async (req, res) => {
+  try {
+    const { email, password } = req.body;
+
+    if (!email || !password) {
+      return res.status(400).json({ message: "Email and password are required." });
+    }
+
+    // Check if user already exists
+    const existingUser = await User.findOne({ email });
+    if (existingUser) {
+      return res.status(400).json({ message: "User already exists." });
+    }
+
+    // Hash the password
+    const hashedPassword = await bcrypt.hash(password, 10);
+
+    // Save the new user
+    const user = new User({ email, password: hashedPassword });
+    await user.save();
+
+    res.status(201).json({ message: "User registered successfully." });
+  } catch (error) {
+    res.status(500).json({ message: "Registration failed.", error: error.message });
+  }
+};
+
 
 // Middleware to ensure authentication
 exports.ensureAuth = (req, res, next) => {
