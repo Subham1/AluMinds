@@ -1,16 +1,18 @@
 const express = require("express");
 const dotenv = require("dotenv");
 const mongoose = require("mongoose");
-const cors = require("cors");
+
 const session = require("express-session");
 const passport = require("./config/passportConfig"); // Ensure this file exists and is configured
 const authRoutes = require("./routes/authRoutes");
 const predictionRoutes = require("./routes/predictionRoutes");
-
+const cors = require('cors');
 dotenv.config();
 
 const app = express();
-
+app.use(cors({
+  // Your ML model server's origin
+}));
 // Middleware
 app.use(cors());
 app.use(express.json());

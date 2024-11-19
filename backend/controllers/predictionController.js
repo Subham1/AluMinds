@@ -2,10 +2,13 @@ const Prediction = require("../models/Prediction");
 const axios = require("axios");
 
 exports.makePrediction = async (req, res) => {
-  const { parameters } = req.body;
+  const { parameters, chemicalComposition } = req.body;
 
   try {
-    const response = await axios.post("http://ml-model-url/predict", { parameters });
+  
+    
+    const response = await axios.post("http://localhost:3000/predict", {  parameters,
+      chemicalComposition });
     const outputs = response.data;
 
     const prediction = new Prediction({ parameters, outputs });
