@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 
-const mongoose = require("mongoose");
+
 
 const predictionSchema = new mongoose.Schema({
   parameters: {
@@ -13,4 +13,4 @@ const predictionSchema = new mongoose.Schema({
   },
 });
 
-const Prediction = mongoose.model("Prediction", predictionSchema);
+module.exports = mongoose.model("Prediction", predictionSchema);
