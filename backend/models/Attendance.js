@@ -1,7 +1,9 @@
 const mongoose = require("mongoose");
 
 const AttendanceSchema = new mongoose.Schema({
-  email: { type: String, required: true, unique: true },
+  
+  user: { type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true },
+  email: { type: String, unique: true, required: true },
   loginTime: { type: Date },
   logoutTime: { type: Date },
 });

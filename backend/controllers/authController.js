@@ -1,7 +1,7 @@
 const passport = require("passport");
 const bcrypt = require("bcrypt");
 const User = require("../models/User");
-const bcrypt = require("bcrypt");
+const Attendance=require("../models/Attendance")
 const jwt = require("jsonwebtoken");
 
 exports.registerUser = async (req, res) => {
@@ -84,32 +84,50 @@ exports.loginUser = (req, res, next) => {
     req.login(user, async (loginErr) => {
       if (loginErr) return res.status(500).json({ message: "Login failed", loginErr });
 
-      user.loginTime = new Date();
-      await user.save();
+      try {
+        // Create a new Attendance record for this login
+        const attendance = new Attendance({
+          user: user._id,
+          email:req.body.email,
+          loginTime: new Date(),
+        });
+        await attendance.save();
 
-      res.status(200).json({ message: "Login successful", user });
+        res.status(200).json({ message: "Login successful", attendance });
+      } catch (error) {
+        res.status(500).json({ message: "Failed to log attendance", error });
+      }
     });
   })(req, res, next);
 };
 
-// Logout logic
+
+//logout
 exports.logoutUser = async (req, res) => {
   if (!req.isAuthenticated()) {
     return res.status(401).json({ message: "Not logged in" });
   }
 
   try {
-    const { email } = req.user;
+    const { _id } = req.user;
 
-    await User.findOneAndUpdate(
-      { email },
-      { logoutTime: new Date() },
-      { new: true }
-    );
+    // Find the latest attendance entry without a logoutTime
+    const attendance = await Attendance.findOne({
+      user: _id,
+      logoutTime: null,
+    }).sort({ loginTime: -1 });
+
+    if (!attendance) {
+      return res.status(400).json({ message: "No active login session found." });
+    }
+
+    // Update the logoutTime
+    attendance.logoutTime = new Date();
+    await attendance.save();
 
     req.logout((err) => {
       if (err) return res.status(500).json({ message: "Logout failed", err });
-      res.status(200).json({ message: "Logout successful" });
+      res.status(200).json({ message: "Logout successful", attendance });
     });
   } catch (error) {
     res.status(500).json({ message: "Logout failed", error });
