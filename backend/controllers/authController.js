@@ -68,7 +68,7 @@ exports.signupUser = async (req, res) => {
       if (err) {
         return res.status(500).json({ message: "Signup successful, but login failed", err });
       }
-      res.status(201).json({ message: "Signup and login successful", user });
+      res.status(201).json({ message: "Signup successful", user });
     });
   } catch (error) {
     res.status(500).json({ message: "Signup failed", error });
@@ -88,7 +88,7 @@ exports.loginUser = (req, res, next) => {
         // Create a new Attendance record for this login
         const attendance = new Attendance({
           user: user._id,
-          email:req.body.email,
+          email: user.email,
           loginTime: new Date(),
         });
         await attendance.save();
@@ -100,6 +100,7 @@ exports.loginUser = (req, res, next) => {
     });
   })(req, res, next);
 };
+
 
 
 //logout
@@ -133,3 +134,4 @@ exports.logoutUser = async (req, res) => {
     res.status(500).json({ message: "Logout failed", error });
   }
 };
+
