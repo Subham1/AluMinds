@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import PredictOptimize from "./PredictOptimize";
 import Visualization from "./Visualization";
 
-const PredictOptimizeHandler = () => {
+const PredictOptimizeHandler = (openModal,openOptimizeModal) => {
   const [data, setData] = useState({
     conductivity: 61.38,
     elongation: 5.98,
@@ -33,7 +33,7 @@ const PredictOptimizeHandler = () => {
 
   return (
     <div style={{ display: "flex", gap: "20px", padding: "20px" }}>
-      <PredictOptimize onPredict={handlePredict} onOptimize={handleOptimize} />
+      <PredictOptimize openModal={openModal} onOptimize={handleOptimize} />
       <Visualization
         conductivity={data.conductivity}
         elongation={data.elongation}
