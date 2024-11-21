@@ -1,11 +1,13 @@
 import React, { useState } from "react";
 import "./Login.css";
+import { useNavigate } from "react-router-dom";
 export default function Login(){
   const [formData, setFormData] = useState({
     email: "",
     password: "",
   });
-
+  const [error, setError] = useState("");
+  const navigate = useNavigate(); 
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
@@ -26,10 +28,12 @@ export default function Login(){
       })
       .then((data) => {
         console.log("Login successful:", data);
+        navigate("/dashboard");
         // Handle success (for example, store user data, redirect, etc.)
       })
       .catch((error) => {
         console.error("Error:", error);
+        setError("Invalid email or password. Please try again.");
         // Handle error (show error message to the user)
       });
   };
@@ -39,6 +43,7 @@ export default function Login(){
       <div className="login-container">
         <div className="login-box">
           <h2 className="login-title">LOGIN</h2>
+          {error && <div className="error-message">{error}</div>}
           <form onSubmit={handleSubmit}>
             <input
               type="email"
