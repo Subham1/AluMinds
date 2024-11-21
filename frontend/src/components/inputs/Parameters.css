@@ -1,0 +1,101 @@
+/* Main container for all rows */
+.parameters-container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 20px;
+}
+
+/* Each row containing parameters and compositions */
+.parameter-composition-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+/* Parameters section (4 in a row) */
+.parameters-section {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  /* 4 columns for parameters */
+  gap: 15px;
+  flex: 2;
+  /* Larger space for parameters */
+}
+
+/* Compositions section (2 in a row) */
+.compositions-section {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  /* 2 columns for compositions */
+  gap: 15px;
+  flex: 1;
+  /* Smaller space for compositions */
+}
+
+/* Parameter card styling */
+.parameter-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  padding: 10px;
+  height: 80px; /* Decreased height */
+  text-align: center;
+}
+
+.parameter-icon {
+  color: #b71c1c;
+  font-size: 1.7rem;
+  margin-bottom: 5px;
+}
+
+.parameter-value {
+  font-size: 16px;
+  font-weight: bold;
+  color: #333;
+}
+
+.parameter-label {
+  font-size: 12px;
+  color: #666;
+}
+
+/* Composition card styling */
+/* Composition card styling */
+.composition-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  padding: 10px;
+  height: 80px;
+  background: #fff;
+  border: 2px solid;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.composition-circle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 50px;
+  /* Increased size for circle */
+  height: 50px;
+  /* Increased size for circle */
+  border-radius: 50%;
+  color: #fff;
+  font-weight: bold;
+  font-size: 18px;
+  /* Increased font size for circle text */
+}
+
+.composition-value {
+  font-size: 16px;
+  /* Increased font size for the composition value */
+  font-weight: bold;
+  color: #333;
+  margin-left: 10px;
+}

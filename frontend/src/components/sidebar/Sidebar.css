@@ -1,0 +1,47 @@
+.sidebar {
+    height: 84vh;
+    width: 16.75%;
+    background-color: #9D1D1D;
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    padding-right: 0px;
+    color: white;
+    font-family: Arial, sans-serif;
+}
+
+.sidebar ul {
+    list-style: none;
+    padding: 0;
+    width: 100%;
+    margin-left: 15px;
+}
+
+.sidebar li {
+    display: flex;
+    align-items: center;
+    margin: 25px 0;
+    font-size: 1.5rem; /* Larger text size */
+    color: white;
+    cursor: pointer;
+}
+
+.sidebar li:hover {
+    opacity: 0.8;
+}
+
+.sidebar li svg {
+    margin-right: 25px; /* Increased space between icon and text */
+    font-size: 2rem; /* Larger icon size */
+    color: white;
+}
+
+.sidebar .logout {
+    margin-top: 20rem; /* Push Logout to the bottom */
+    width: 100%;
+    text-align: center;
+}
+
+

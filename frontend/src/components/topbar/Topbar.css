@@ -1,0 +1,14 @@
+.topbar{
+    margin-bottom: 5px;
+    margin-left: 5px;
+}
+
+.img-span{
+    display: flex;
+    flex-direction: column;
+}
+
+span{
+    font-size: 0.7rem;
+    margin-left: 0.5rem;
+}

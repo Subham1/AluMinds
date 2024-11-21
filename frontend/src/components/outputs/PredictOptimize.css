@@ -1,0 +1,50 @@
+.predict-optimize-container {
+    display: flex;
+    align-items: center;
+    gap: 100px;
+    margin: 0 70px;
+  }
+  
+  .predict-button {
+    background-color: #114b43;
+    color: white;
+    padding: 10px 20px;
+    font-size: 18px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .feedback-box {
+    background-color: #fff6f6;
+    border: 1px solid #e0e0e0;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    width: 15rem;
+  }
+  
+  .feedback-title {
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+  
+  .feedback-text {
+    font-size: 14px;
+    margin-bottom: 20px;
+  }
+  
+  .optimize-button {
+    background-color: #9e1b1b;
+    color: white;
+    padding: 10px 20px;
+    font-size: 18px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+
+
+  
