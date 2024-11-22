@@ -39,24 +39,43 @@ export default function Dashboard() {
   });
   const [mlFeedback, setMlFeedback] = useState("");
 
-  const openModal = () => setModalIsOpen(true);
-  const closeModal = () => setModalIsOpen(false);
-  const openOptimizeModal = () => setOptimizeModalIsOpen(true);
-  const closeOptimizeModal = () => setOptimizeModalIsOpen(false);
-  const handleInputChange = (e) => {
-    const { name, value } = e.target;
-    setInputData((prevState) => ({
-      ...prevState,
-      [name]: value,
-    }));
-  };
-  const handleOptimizeInputChange = (e) => {
-    const { name, value } = e.target;
-    setOptimizeData((prevState) => ({
-      ...prevState,
-      [name]: value,
-    }));
-  };
+    const openModal = () => setModalIsOpen(true);
+    const closeModal = () => setModalIsOpen(false);
+    const openOptimizeModal = () => setOptimizeModalIsOpen(true);
+    const closeOptimizeModal = () => setOptimizeModalIsOpen(false);
+    const handleInputChange = (e) => {
+        const { name, value } = e.target;
+        setInputData(prevState => ({
+            ...prevState,
+            [name]: value
+        }));
+        
+    };
+    
+    const handleOptimizeInputChange = (e) => {
+        const { name, value } = e.target;
+        setOptimizeData((prevState) => {
+            const updatedOptimizeData = {
+              ...prevState,
+              [name]: value,
+            };
+      
+            // Update output state to reflect specific fields from optimizeData
+            setOutput((prevOutput) => ({
+              ...prevOutput,
+              // Update only the specific fields (e.g., UTS, Elongation, Conductivity)
+              UTS: updatedOptimizeData['UTS (MPa)'], // You can set UTS to castingTemperature or any other field as needed
+              Elongation: updatedOptimizeData['Elongation (%)'], // Similarly for Elongation
+              Conductivity: updatedOptimizeData['Conductivity (S/m)'] // And Conductivity
+            }));
+      
+            return updatedOptimizeData;
+          });
+        
+       
+        
+    };
+   
 
   const handlePredict = () => {
     const numericInputData = Object.fromEntries(
