@@ -11,7 +11,6 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import "./Parameters.css";
 
-
 const inputData = {
   "Casting Temperature": "5.50",
   "Cooling Water Temperature": "30.00",
@@ -27,8 +26,7 @@ const inputData = {
   "Ag%": "0.03%",
 };
 
-
-export default function Parameters({inputData}) {
+export default function Parameters({ inputData }) {
   const parameters = [
     { icon: faThermometerHalf, label: "Casting Temperature", value: "5.31" },
     { icon: faDroplet, label: "Cooling Water Temperature", value: "29.68" },
@@ -41,34 +39,32 @@ export default function Parameters({inputData}) {
   ];
 
   const compositions = [
-    { label: "Al%",  color: "#ff5722",value: "1.33" },
-    { label: "Cu%",  color: "#2196f3",value: "1.33" },
-    { label: "Mg%",  color: "#9c27b0",value: "1.33" },
-    { label: "Ag%",  color: "#8b0000",value: "1.33" },
+    { label: "Al%", color: "#ff5722", value: "1.33" },
+    { label: "Cu%", color: "#2196f3", value: "1.33" },
+    { label: "Mg%", color: "#9c27b0", value: "1.33" },
+    { label: "Ag%", color: "#8b0000", value: "1.33" },
   ];
 
-  // Grouping the data into rows
-  const rows = [
-    {
-      parameters: parameters.slice(0, 4), // First row of parameters
-      compositions: compositions.slice(0, 2), // First row of compositions
-    },
-    {
-      parameters: parameters.slice(4, 8), // Second row of parameters
-      compositions: compositions.slice(2, 4), // Second row of compositions
-    },
+  // Splitting rows
+  const parameterRows = [
+    parameters.slice(0, 4),
+    parameters.slice(4, 8),
+  ];
+
+  const compositionRows = [
+    compositions.slice(0, 2),
+    compositions.slice(2, 4),
   ];
 
   return (
     <div className="parameters-container">
-      {rows.map((row, rowIndex) => (
-        <div className="parameter-composition-row" key={rowIndex}>
-          {/* Render parameter cards */}
-          <div className="parameters-section">
-            {row.parameters.map((param, index) => (
+      {/* Parameters Card */}
+      <div className="parameters-card">
+        {parameterRows.map((row, rowIndex) => (
+          <div className="parameters-section" key={rowIndex}>
+            {row.map((param, index) => (
               <div className="parameter-card" key={index}>
                 <FontAwesomeIcon icon={param.icon} className="parameter-icon" />
-                
                 <div className="val-label">
                   <div className="parameter-value">{inputData[param.label] || 'N/A'}</div>
                   <div className="parameter-label">{param.label}</div>
@@ -76,9 +72,14 @@ export default function Parameters({inputData}) {
               </div>
             ))}
           </div>
-          {/* Render chemical composition cards */}
-          <div className="compositions-section">
-            {row.compositions.map((comp, index) => (
+        ))}
+      </div>
+
+      {/* Compositions Card */}
+      <div className="compositions-card">
+        {compositionRows.map((row, rowIndex) => (
+          <div className="compositions-section" key={rowIndex}>
+            {row.map((comp, index) => (
               <div
                 className="composition-card"
                 key={index}
@@ -90,13 +91,12 @@ export default function Parameters({inputData}) {
                 >
                   {comp.label}
                 </div>
-               
                 <div className="composition-value">{inputData[comp.label] || 'N/A'}</div>
               </div>
             ))}
           </div>
-        </div>
-      ))}
+        ))}
+      </div>
     </div>
   );
 }
