@@ -1,5 +1,5 @@
 .sidebar {
-    height: 84vh;
+    height: 85.57vh;
     width: 16.75%;
     background-color: #9D1D1D;
     border-radius: 15px;
@@ -39,9 +39,41 @@
 }
 
 .sidebar .logout {
-    margin-top: 20rem; /* Push Logout to the bottom */
+    margin-top: 23rem;
+    padding-bottom: 10px; /* Push Logout to the bottom */
     width: 100%;
     text-align: center;
 }
 
 
+
+  
+  .sidebar ul {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .sidebar ul li {
+    margin: 15px 0;
+    padding: 10px 0px 20px 5px; /* Add vertical space between items */
+  }
+  
+  .sidebar-link {
+    text-decoration: none;
+    color: rgb(252, 250, 250); /* Default text color */
+    font-size: 19px; /* Default text size */
+    display: flex;
+    align-items: center; /* Align icon and text vertically */
+    transition: color 0.3s, font-size 0.3s; /* Smooth hover transition */
+  }
+  
+  .sidebar-link .icon {
+    margin-right: 10px; /* Add space between icon and text */
+    font-size: 22px; /* Adjust icon size */
+  }
+  
+  .sidebar-link:hover {
+    color: rgb(19, 19, 19); /* Change text color on hover */
+    font-size: 18px; /* Increase text size on hover */
+  }
+  

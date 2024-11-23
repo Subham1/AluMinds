@@ -6,7 +6,7 @@ export default defineConfig({
   server: {
     proxy: {
       '/auth': {
-        target: 'http://localhost:5000', // Replace this with your backend server URL
+        target: 'http://localhost:5001', // Replace this with your backend server URL
         changeOrigin: true,
         secure: false,
       },

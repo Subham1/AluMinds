@@ -1,16 +1,14 @@
-const mongoose = require("mongoose");
+const mongoose = require('mongoose');
 
-
-
+// Define the Prediction Schema
 const predictionSchema = new mongoose.Schema({
-  parameters: {
-    type: Object, // Allow storing an object instead of [string]
-    required: true,
-  },
-  outputs: {
-    type: Object, // Allow storing an object instead of [string]
-    required: true,
-  },
+    type: String, // "prediction" or "optimization"
+    input: Object,
+    output: Object,
+    timestamp: { type: Date, default: Date.now }
 });
 
-module.exports = mongoose.model("Prediction", predictionSchema);
+// Export the Model
+const Prediction = mongoose.model('Prediction', predictionSchema);
+
+module.exports = Prediction;

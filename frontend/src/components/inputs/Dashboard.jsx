@@ -133,9 +133,8 @@ export default function Dashboard() {
         closeModal();
         ``;
 
-        // Save the predicted data
-        /*
-            axios.post('http://localhost:5001/savePrediction', {
+        
+            axios.post('http://localhost:5001/save', {
                 type: 'prediction',
                 input: numericInputData,
                 output: {
@@ -143,11 +142,12 @@ export default function Dashboard() {
                     Elongation: data['Elongation (%)'],
                     Conductivity: data['Conductivity (S/m)']
                 }
+                
             })
             .catch(error => {
                 console.error('Error saving prediction:', error);
             });
-            */
+            console.log("saved");
       })
       .catch((error) => {
         console.error("Error during prediction:", error);
@@ -204,9 +204,8 @@ export default function Dashboard() {
 
         setMlFeedback(`Optimization completed. Inputs updated.`);
         closeOptimizeModal();
-        /*
-            // Save the optimization data
-            axios.post('http://localhost:5001/savePrediction', {
+        
+            axios.post('http://localhost:5001/save', {
                 type: 'optimization',
                 input: numericOptimizeData,
                 output: {
@@ -227,7 +226,7 @@ export default function Dashboard() {
             .catch(error => {
                 console.error('Error saving optimization:', error);
             });
-            */
+       
       })
       .catch((error) => {
         console.error("Error during optimization:", error);
