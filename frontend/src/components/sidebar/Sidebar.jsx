@@ -14,7 +14,7 @@ export default function Sidebar()
           </Link>
         </li>
         <li>
-          <Link to="/alerts" className="sidebar-link">
+          <Link to="/realtime-dashboard" className="sidebar-link">
             <FaBell className="icon" /> Alerts
           </Link>
         </li>
