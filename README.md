@@ -1,5 +1,7 @@
 # Aluminium Wire Rod Property Prediction System
 
+![WhatsApp Image 2025-04-17 at 00 47 31_d1ebbd82](https://github.com/user-attachments/assets/3f0940fe-22ca-4203-9bfc-88a67321f1e7)
+
 ## Overview
 The particular problem was faced by the NALCO(National Aluminium company Limited) , We tried to tackle this problem in the big stages of Smart India Hackathon 2024 during the Grand Finale and achieved runner up among 130 Teams.
 The **Aluminium Wire Rod Property Prediction System** is a modern AI/ML-powered solution designed to predict and optimize the physical properties of Aluminium wire rods, such as **UTS (Ultimate Tensile Strength)**, **Elongation**, and **Conductivity**. The system improves productivity and quality control by analyzing the critical parameters of the casting and rolling processes. 
