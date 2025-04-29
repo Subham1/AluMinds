@@ -8,7 +8,7 @@ const axios = require("axios");
 const { Pool } = require("pg"); // Import the PostgreSQL Pool module
 
 const authRoutes = require("./routes/authRoutes");
-const predictionRoutes = require("./routes/predictionRoutes");
+
 const displayRoute = require("./routes/displayRoute");
 const getDataRoute = require("./routes/getData");
 
@@ -20,7 +20,7 @@ const app = express();
 // Configure CORS for frontend access
 app.use(
   cors({
-    origin: process.env.CLIENT_ORIGIN || "http://localhost:5173", // Replace with frontend origin
+    origin: "*", // Replace with frontend origin
     methods: ["GET", "POST"],
     credentials: true,
   })
@@ -45,8 +45,11 @@ app.use(passport.session());
 
 // PostgreSQL database connection
 const pool = new Pool({
-  connectionString: "postgresql://postgres.mfwvmagrbjjvhmwpegwu:Gopi@198123@aws-0-ap-south-1.pooler.supabase.com:6543/postgres",
+  connectionString: process.env.PG_CONNECTION_STRING,
 });
+
+
+  
 
 pool.connect((err) => {
   if (err) {
@@ -67,7 +70,7 @@ mongoose
 
 // Routes
 app.use("/auth", authRoutes); // Authentication routes
-app.use("/api/predictions", predictionRoutes); // Prediction routes
+
 app.use("/display", displayRoute);
 app.use("/getdata", getDataRoute);
 
@@ -76,7 +79,7 @@ app.post("/re-predict", async (req, res) => {
     const { uts, elongation, conductivity } = req.body;
 
     // Send data to Flask server for prediction
-    const response = await axios.post("http://localhost:5000/reverse_predict", {
+    const response = await axios.post("https://flask-aluminds.onrender.com/reverse_predict", {
       uts,
       elongation,
       conductivity,
