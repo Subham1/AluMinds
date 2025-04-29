@@ -93,7 +93,7 @@ export default function Optimize() {
       debounce(() => {
         if (name === "uts") {
           axios
-            .post("http://127.0.0.1:5000/elongation_predict", {
+            .post("https://flask-aluminds.onrender.com/elongation_predict", {
               uts: numericValue,
             })
             .then((response) => {
@@ -107,7 +107,7 @@ export default function Optimize() {
             });
         } else if (name === "elongation") {
           axios
-            .post("http://127.0.0.1:5000/uts_predict", {
+            .post("https://flask-aluminds.onrender.com/uts_predict", {
               elongation: numericValue,
             })
             .then((response) => {
@@ -162,7 +162,7 @@ export default function Optimize() {
     );
 
     axios
-      .post("http://127.0.0.1:5000/reverse_predict", numericOptimizeData, {
+      .post("https://flask-aluminds.onrender.com/reverse_predict", numericOptimizeData, {
         headers: {
           "Content-Type": "application/json",
         },
@@ -199,7 +199,7 @@ export default function Optimize() {
         setLastOptimizedData(data);
 
         axios
-          .post("http://localhost:5001/save", {
+          .post("https://aluminds-wo5n.onrender.com/save", {
             type: "optimization",
             input: numericOptimizeData,
             output: data,

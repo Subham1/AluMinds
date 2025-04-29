@@ -156,7 +156,7 @@ const [formError, setFormError] = useState("");
     );
 
     axios
-      .post("http://127.0.0.1:5000/predict", numericInputData, {
+      .post("https://flask-aluminds.onrender.com/predict", numericInputData, {
         headers: {
           "Content-Type": "application/json",
         },
@@ -205,7 +205,7 @@ const [formError, setFormError] = useState("");
         ``;
 
         
-            axios.post('http://localhost:5001/save', {
+            axios.post('https://aluminds-wo5n.onrender.com/save', {
                 type: 'prediction',
                 input: numericInputData,
                 output: {
@@ -250,7 +250,7 @@ const [formError, setFormError] = useState("");
     }
 
     axios
-      .post("http://127.0.0.1:5000/reverse_predict", numericOptimizeData, {
+      .post("https://flask-aluminds.onrender.com/reverse_predict", numericOptimizeData, {
         headers: {
           "Content-Type": "application/json",
         },
@@ -283,7 +283,7 @@ const [formError, setFormError] = useState("");
         setRefreshGraph((prev) => !prev);
         closeOptimizeModal();
         
-            axios.post('http://localhost:5001/save', {
+            axios.post('https://aluminds-wo5n.onrender.com/save', {
                 type: 'optimization',
                 input: numericOptimizeData,
                 output: {

@@ -25,7 +25,7 @@ const DisplayData = () => {
 
   const fetchPredictions = async () => {
     try {
-      const response = await axios.get("http://localhost:5001/display");
+      const response = await axios.get("https://aluminds-wo5n.onrender.com/display");
       const data = response.data;
       setPredictions(data);
       setFilteredPredictions(data); // Show all data initially

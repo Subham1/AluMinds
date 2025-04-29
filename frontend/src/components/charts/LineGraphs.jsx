@@ -12,7 +12,7 @@ const LineGraphs = ({ refresh }) => {
   };
 
   useEffect(() => {
-    axios.get('http://localhost:5001/getdata')
+    axios.get('https://aluminds-wo5n.onrender.com/getdata')
       .then((response) => {
         const dataArray = Object.values(response.data);
         const processedData = dataArray.map((prediction, index) => ({

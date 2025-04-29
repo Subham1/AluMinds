@@ -64,7 +64,7 @@ const RealtimeDashboard = () => {
   const getPrediction = async () => {
     try {
       const response = await axios.post(
-        "http://localhost:5001/re-predict",
+        "https://aluminds-wo5n.onrender.com/re-predict",
         inputs
       );
       setPrediction(response.data);
@@ -78,7 +78,7 @@ const RealtimeDashboard = () => {
     if (!shouldDisplayData) return;
 
     const eventSource = new EventSource(
-      `http://localhost:5001/realtime?interval=${intervalValue}`
+      `https://aluminds-wo5n.onrender.com/realtime?interval=${intervalValue}`
     );
     eventSource.onmessage = (event) => {
       const incomingData = JSON.parse(event.data);
