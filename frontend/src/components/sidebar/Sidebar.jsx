@@ -7,7 +7,7 @@ export default function Sidebar() {
         <div className="sidebar">
             <ul>
                 <li>
-                    <Link to="/dashboard" className="sidebar-link">
+                    <Link to="/" className="sidebar-link">
                         <FaHome className="icon" /> Dashboard
                     </Link>
                 </li>
