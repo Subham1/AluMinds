@@ -20,7 +20,7 @@ function App() {
           <Route path="/login" element={<Login />} />
 
           {/* Direct Access to Routes */}
-          <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="/" element={<Dashboard />} />
           <Route path="/optimize" element={<Optimize />} />
           <Route path="/realtime-dashboard" element={<RealtimeDashboard />} />
           <Route path="/display" element={<DisplayData />} />
