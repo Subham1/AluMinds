@@ -22,7 +22,7 @@ function App() {
           {/* Direct Access to Routes */}
           <Route path="/" element={<Dashboard />} />
           <Route path="/optimize" element={<Optimize />} />
-          <Route path="/" element={<RealtimeDashboard />} />
+          <Route path="/realtime-dashboard" element={<RealtimeDashboard />} />
           <Route path="/display" element={<DisplayData />} />
           <Route path="/guide" element={<Guide />} />
 
