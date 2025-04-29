@@ -6,10 +6,13 @@ export default defineConfig({
   server: {
     proxy: {
       '/auth': {
-        target: 'https://aluminds-wo5n.onrender.com', // Replace this with your backend server URL
+        target: 'https://aluminds-wo5n.onrender.com',
         changeOrigin: true,
         secure: false,
       },
     },
   },
+  build: {
+    outDir: 'dist'
+  }
 });
